@@ -9,17 +9,16 @@ const bodyParser = require('body-parser');
 
 //variable default
 const PORT = process.env.PORT || 8080;
-const URL = 'mongodb+srv://minggu99:minggu99@cluster0.8ty0e.mongodb.net/task?retryWrites=true&w=majority'
+const URL = process.env.MONGO_URL;
 
 
 //Intantiate app
 const app = express();
 
-app.use(express.json());
 
-//use bodyParser
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
+// use bodyParser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 //use routes
 app.use('/users', userRoutes);
